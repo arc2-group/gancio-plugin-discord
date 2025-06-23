@@ -1,15 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    blank.url = "github:divnix/blank";
-
-    pre-commit-hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "blank";
-    };
-
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -39,8 +30,6 @@
         packages.default = pkgs.callPackage ./package.nix { };
 
         devShells.default = pkgs.mkShell {
-          #buildInputs = self.checks.${system}.pre-commit.enabledPackages;
-          #inherit (self.checks.${system}.pre-commit) shellHook;
 
           packages =
             with pkgs;
