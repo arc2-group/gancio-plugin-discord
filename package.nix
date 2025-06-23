@@ -13,9 +13,10 @@ buildNpmPackage {
 
   npmBuildScript = "build";
 
-  postInstall = ''
+  installPhase = ''
     mkdir -p $out
     cp dist/index.js $out/index.js
+    cp -r node_modules $out/
   '';
 
   meta = {
