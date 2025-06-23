@@ -75,11 +75,11 @@ const plugin = {
   },
 
   test(): boolean {
-    if (plugin.settings.token === null) {
+    if (!plugin.settings.token) {
       console.error("Token not set!");
       return false;
     }
-    if (plugin.settings.guildId === null) {
+    if (!plugin.settings.guildId) {
       console.error("Guild ID not set!");
       return false;
     }
