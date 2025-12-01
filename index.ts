@@ -149,7 +149,12 @@ function discordEventObject(event: Event) {
 }
 
 function formatText(text: string) {
-  return turndown.turndown(text);
+  // convert HTML to markdown and limit length to 1000 characters
+  let post = turndown.turndown(text).substring(0,997);
+  if (text.length > 997) {
+    post = post + "..."; // add ellipsis to indicate text continuation
+  }
+  return post;
 }
 
 function eventImage(event: Event) {
